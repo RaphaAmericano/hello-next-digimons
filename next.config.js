@@ -12,6 +12,15 @@ const nextConfig = {
     },
     publicRuntimeConfig: {
         apiUrl: process.env.API_URL
+    },
+    experimental:{
+        images: {
+            allowFutureImages: true
+        },
+        externalDir: true | {
+            enable: true,
+            silent: true
+        }
     }
 }
 
