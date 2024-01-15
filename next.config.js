@@ -23,7 +23,6 @@ const nextConfig = {
             enable: true,
             silent: true
         },
-        serverActions: true
     }
 }
 
