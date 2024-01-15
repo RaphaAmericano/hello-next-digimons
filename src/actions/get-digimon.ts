@@ -3,8 +3,13 @@
 import { getDigimon as get } from "@/api"
 
 export async function getDigimon(name:string){
-    const [digimon] = await get(name)
-    const { name:digimon_name, ...props } = digimon;
-    return { digimon_name, ...props }
+    try {
+        const result = await get(name);
+        const [digimon] = result
+        const { name:digimon_name, ...props } = digimon;
+        return { digimon_name, ...props }
+    } catch (e) {
+        return e
+    }
     
 }

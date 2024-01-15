@@ -19,17 +19,21 @@ interface IProps {
 
 export default async function Page( { params: { name } , searchParams }: IProps ) {
   const result = await getDigimon(name);  
-  const { digimon_name, level, img} = result;
-  return (
-    <div>
-      {/* {JSON.stringify(name)} */}
-      <h1>{digimon_name}</h1>
-      <h2>{level}</h2>
-      <Image 
-        src={img} 
-        width={150} 
-        height={150} 
-        alt={`Picture of ${name}`} />
-    </div>
-  );
+  if(!result){
+    const { digimon_name, level, img} = result;
+    return (
+      <div>
+        {/* {JSON.stringify(name)} */}
+        <h1>{digimon_name}</h1>
+        <h2>{level}</h2>
+        <Image 
+          src={img} 
+          width={150} 
+          height={150} 
+          alt={`Picture of ${name}`} />
+      </div>
+    );
+
+  }
+  return null
 }
