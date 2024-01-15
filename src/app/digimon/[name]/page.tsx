@@ -1,8 +1,8 @@
 import type { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from 'next'
-import { getDigimon,  getDigimons } from "@/api";
+
 
 import Image from "next/image";
-import { Digimon } from '@/types/digimon';
+import { getDigimon } from '@/actions/get-digimon';
 
 interface IProps {
   params: {
@@ -11,15 +11,15 @@ interface IProps {
   searchParams: any 
 }
 
-export async function generateStaticParams(){
-  const digimons = await getDigimons();
-  return digimons.map((digimon: Digimon ) => ({ name: digimon.name.toLowerCase()}))
-}
+// export async function generateStaticParams(){
+//   const digimons = await getDigimons();
+//   return digimons.map((digimon: Digimon ) => ({ name: digimon.name.toLowerCase()}))
+// }
 
 
 export default async function Page( { params: { name } , searchParams }: IProps ) {
-  const [digimon] = await getDigimon(name);  
-  const { name:digimon_name, level, img} = digimon;
+  const result = await getDigimon(name);  
+  const { digimon_name, level, img} = result;
   return (
     <div>
       {/* {JSON.stringify(name)} */}

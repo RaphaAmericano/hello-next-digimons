@@ -1,7 +1,7 @@
 
+import { getDigimons } from '@/actions/get-digimons';
 import Card from '@/components/Card';
 import { Digimon } from '@/types/digimon';
-import { getDigimons } from "@/api";
 
 export default async function Home() {
   const digimons = await getDigimons();
